@@ -23,10 +23,8 @@
   SOFTWARE.
 -->
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
-    <!-- other repositories can be imported and then the features they expose referenced, the command
-         bundle has its own features document since it packages and delivers its own runtime configuration
-         file so including that features document to gain access to the notio-karaf-provision-command feature -->
-    <repository>mvn:${project.groupId}/command/${project.version}/xml/features</repository>
+    <!-- other repositories can be imported and then the features they expose referenced.  No external
+         features are referenced here so just including a few commented out repositories for illustration purposes. -->
     <!-- repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
     <repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository-->
 
@@ -46,6 +44,13 @@
         <feature>notio-karaf-provision-api</feature>
         <bundle dependency="true">mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
         <bundle>mvn:${project.groupId}/service2/${project.version}</bundle>
+    </feature>
+
+    <feature name="notio-karaf-provision-command">
+        <details>Example Karaf Command</details>
+        <feature>notio-karaf-provision-api</feature>
+        <configfile finalname="/etc/com.notio.example.karaf.provision.ExampleCommand.cfg">mvn:${project.groupId}/command/${project.version}/cfg/command</configfile>
+        <bundle>mvn:${project.groupId}/command/${project.version}</bundle>
     </feature>
 
     <feature name="notio-karaf-provision-default">

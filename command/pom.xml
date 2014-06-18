@@ -115,12 +115,6 @@
              </goals>
              <configuration>
                <artifacts>
-                 <!-- install features.xml in the maven repo to be delivered -->
-                 <artifact>
-                   <file>target/features.xml</file>
-                   <type>xml</type>
-                   <classifier>features</classifier>
-                 </artifact>
                  <artifact>
                    <file>target/command.cfg</file>
                    <type>cfg</type>
